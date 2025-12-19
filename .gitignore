@@ -1,0 +1,87 @@
+############################################
+# PYTHON / DJANGO
+############################################
+
+# Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual envs
+venv/
+.venv/
+env/
+.uv/
+
+# Django stuff
+*.sqlite3
+db.sqlite3
+local_settings.py
+media/
+staticfiles/
+static/
+
+# Logs
+*.log
+logs/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+############################################
+# NODE / REACT
+############################################
+
+node_modules/
+dist/
+build/
+dist-ssr/
+*.local
+
+# React environment files
+*.env.local
+*.env.*.local
+
+############################################
+# OS / EDITORS
+############################################
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+*.lnk
+
+# VSCode
+.vscode/*
+!.vscode/extensions.json
+
+# WebStorm / JetBrains
+.idea/
+
+# Misc
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+############################################
+# BACKEND / FRONTEND ARTIFACTS
+############################################
+
+# Coverage
+coverage/
+htmlcov/
+.coverage
+.coverage.*
+
+# PyInstaller
+*.spec
+
+# Temporary files
+*.tmp
+tmp/
