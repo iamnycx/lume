@@ -1,4 +1,4 @@
-Django>=5.0
+Django>=5.0,<6.0
 djangorestframework
 djoser
 drf-nested-routers
@@ -6,7 +6,6 @@ django-cors-headers
 python-dotenv
 dj-database-url
 djangorestframework-simplejwt
-pytest
-pytest-django
-psycopg2
 Pillow
+psycopg2
+dotenv
