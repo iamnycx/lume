@@ -10,7 +10,6 @@ import { UserRoundIcon, X } from 'lucide-react';
 
 export default function Signup({ setActiveCard }: { setActiveCard: Function }) {
 	const [name, setName] = React.useState('');
-	const [gender, setGender] = React.useState('');
 	const [birth, setBirth] = React.useState('');
 	const [birthError, setBirthError] = React.useState<string | null>(null);
 	const [email, setEmail] = React.useState('');
@@ -38,14 +37,9 @@ export default function Signup({ setActiveCard }: { setActiveCard: Function }) {
 			form.append('birth_date', birth);
 			form.append('email', email);
 			form.append('password', password);
-			form.append('gender', gender);
 			if (avatarFile) form.append('avatar', avatarFile);
 
-			await Axios.post('/auth/users/', form, {
-				headers: {
-					'Content-Type': 'multipart/form-data',
-				},
-			});
+			await Axios.post('/auth/users/', form);
 
 			const res = await Axios.post('/auth/jwt/create/', {
 				email,
@@ -226,19 +220,6 @@ export default function Signup({ setActiveCard }: { setActiveCard: Function }) {
 						type='date'
 						max={new Date().toISOString().split('T')[0]}
 					/>
-					<Label htmlFor='gender' className='mb-2 mt-4'>
-						Gender
-					</Label>
-					<select
-						id='gender'
-						value={gender}
-						onChange={(e) => setGender(e.target.value)}
-					>
-						<option value=''>Select gender</option>
-						<option value='Male'>Male</option>
-						<option value='Female'>Female</option>
-						<option value='Other'>Other</option>
-					</select>
 					{birthError && (
 						<p className='text-sm text-destructive mt-1'>
 							{birthError}

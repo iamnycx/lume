@@ -44,6 +44,7 @@ dist-ssr/
 # React environment files
 *.env.local
 *.env.*.local
+*.env.prod
 
 ############################################
 # OS / EDITORS

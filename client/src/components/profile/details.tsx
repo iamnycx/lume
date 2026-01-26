@@ -20,8 +20,6 @@ export default function Details({
 	const [nameEditMode, setNameEditMode] = React.useState(false);
 	const [birthEditMode, setBirthEditMode] = React.useState(false);
 	const [name, setName] = React.useState<string>();
-	const [genderEditMode, setGenderEditMode] = React.useState(false);
-	const [gender, setGender] = React.useState<string>();
 	const [birthDate, setBirthDate] = React.useState<string>();
 	const [avatarFile, setAvatarFile] = React.useState<File | null>(null);
 	const [avatarPreview, setAvatarPreview] = React.useState<
@@ -52,7 +50,6 @@ export default function Details({
 	React.useEffect(() => {
 		setName(data?.name);
 		setBirthDate(data?.birth_date);
-		setGender(data?.gender);
 		if (!avatarFile) setAvatarPreview(data?.avatar);
 	}, [data, avatarFile]);
 
@@ -70,7 +67,6 @@ export default function Details({
 				if (name !== undefined) form.append('name', name);
 				if (birthDate !== undefined)
 					form.append('birth_date', birthDate);
-				if (gender !== undefined) form.append('gender', gender);
 
 				await Axios.patch('/auth/users/me/', form, {
 					headers: { 'Content-Type': 'multipart/form-data' },
@@ -79,12 +75,10 @@ export default function Details({
 				await Axios.patch('/auth/users/me/', {
 					name,
 					birth_date: birthDate,
-					gender,
 				});
 				setEditMode(false);
 				setNameEditMode(false);
 				setBirthEditMode(false);
-				setGenderEditMode(false);
 			}
 
 			try {
@@ -164,41 +158,6 @@ export default function Details({
 								className='absolute -right-8 text-primary/50 hover:text-primary cursor-pointer'
 								onClick={() => {
 									setNameEditMode(true);
-									setEditMode(true);
-								}}
-							>
-								<PencilLineIcon />
-							</Button>
-						</div>
-					)}
-
-					{genderEditMode ? (
-						<div className='flex items-center relative'>
-							<select
-								id='gender'
-								value={gender}
-								onChange={(e) => setGender(e.target.value)}
-							>
-								<option value=''>Select gender</option>
-								<option value='Male'>Male</option>
-								<option value='Female'>Female</option>
-								<option value='Other'>Other</option>
-							</select>
-						</div>
-					) : (
-						<div className='flex items-center relative'>
-							{gender ? (
-								<span className='text-center'>{gender}</span>
-							) : (
-								<span className='text-center text-muted-foreground'>
-									Not specified
-								</span>
-							)}
-							<Button
-								variant={'link'}
-								className='absolute -right-8 text-primary/50 hover:text-primary cursor-pointer'
-								onClick={() => {
-									setGenderEditMode(true);
 									setEditMode(true);
 								}}
 							>

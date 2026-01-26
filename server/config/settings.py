@@ -3,7 +3,7 @@ from pathlib import Path
 from datetime import timedelta
 from dotenv import load_dotenv
 
-load_dotenv('.env.prod')
+load_dotenv('.env.local')
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -117,7 +117,7 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_TZ = True
+wwwwwwUSE_TZ = True
 
 STATIC_URL = "static/"
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
